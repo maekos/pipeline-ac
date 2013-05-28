@@ -140,8 +140,8 @@ memory[base+offset] ← rt
 
 *Propósito* Guarda palabra en memoria.
 
-memory[base+offset] ← rt
-
+*Descripción:* memory[base+offset] ← rt
+----
 === ADDI (Add Inmediate Word)===
 {{{ 
 32                             16                               0
@@ -150,11 +150,11 @@ memory[base+offset] ← rt
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-*Formato* ADDI rt, rs, immediate
+*Formato* ADDI rt, rs, inmediate
 
 *Propósito:* Suma una constante a un entero de 32 bits. Si ocurre un overflow, then trap.
 
-*Description* rt ← rs + immediate
+*Descripción:* rt ← rs + inmediate
 ----
 === ADDIU (Add Inmediate Word unsigned)===
 {{{ 
@@ -164,11 +164,11 @@ memory[base+offset] ← rt
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-*Formato:* ADDIU rt, rs, immediate
+*Formato:* ADDIU rt, rs, inmediate
 
 *Propósito:* Suma una constante a un entero de 32 bits. Si ocurre un overflow, then trap.
 
-*Description* rt ← rs + immediate
+*Descripción* rt ← rs + inmediate
 ----
 === ANDI (And Inmediate)===
 {{{ 
@@ -179,9 +179,9 @@ memory[base+offset] ← rt
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-*Formato:* ANDI rt, rs, immediate
+*Formato:* ANDI rt, rs, inmediate
 
-*Propósito:* Hace bit a bit la operacion lógica and con una constante.
+*Propósito:* Hace bit a bit la operación lógica AND con una constante.
 
 *Description* rt ← rs AND immediate
 ----
@@ -198,7 +198,7 @@ memory[base+offset] ← rt
 
 *Propósito:* Hace una operación lógica OR bit a bit con una constante.
 
-*Description:* rd ← rs OR immediate
+*Descripción:* rd ← rs OR immediate
 ----
 ===XORI (Exclusive OR Immediate)===
 {{{ 
@@ -209,11 +209,11 @@ memory[base+offset] ← rt
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-Format: XORI rt, rs, immediate
+*Formato:* XORI rt, rs, immediate
 
-Purpose: Hace una operación lógica OR bit a bit con una constante.
+*Propósito:* Hace una operación lógica OR bit a bit con una constante.
 
-Description: rt ← rs XOR inmediate
+*Descripción:* rt ← rs XOR inmediate
 ----
 ===LUI(Load Upper Inmediate)===
 {{{ 
@@ -227,7 +227,7 @@ Description: rt ← rs XOR inmediate
 
 *Propósito:* Carga una constante en la parte alta de una media palabra.
 
-*Descrición: rt ← inmediate || ,,0,,16
+*Descripción:* rt ← inmediate || ,,0,,16
 ----
 ===SLTI(Set on Less Than Inmediate)===
 {{{ 
@@ -284,7 +284,7 @@ Description: rt ← rs XOR inmediate
 
 *Propósito:* Compara si son distintos y salta.
 
-Description: if (rs ≠ rt) luego salta.
+*Descripción:* if (rs ≠ rt) luego salta.
 ----
 ===J(Jump)===
 {{{ 
@@ -298,6 +298,7 @@ Description: if (rs ≠ rt) luego salta.
 *Formato:* J target
 
 *Propósito:* Salto dentro de los siguientes 256 MB.
+
 ----
 ===JAL(Jump And Link)===
 {{{ 
@@ -307,11 +308,12 @@ Description: if (rs ≠ rt) luego salta.
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---------------------26----------------------------+
 }}}
+*Formato:* JAL target
+*Propósito:* Llama a procedimiento dentro de los siguientes 256 MB
 
-
-*Tipo J*
-JR:
-JALR:
+==Tipo J==
+JR
+JALR
 
 *Tipo R*
 SLL:
