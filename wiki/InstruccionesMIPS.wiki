@@ -229,7 +229,7 @@ Description: rt ← rs XOR inmediate
 
 *Descrición: rt ← inmediate || ,,0,,16
 ----
-SLTI(Set on Less Than Immediate)
+===SLTI(Set on Less Than Inmediate)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -237,11 +237,13 @@ SLTI(Set on Less Than Immediate)
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-Format: SLTI rt, rs, immediate
-Purpose: To record the result of a less-than comparison with a constant.
-Description: rt ← (rs < immediate)
+*Formato:* SLTI rt, rs, inmediate
+
+*Propósito:* Guarda el resultado de la comparación con la constante
+
+*Descripción:* rt ← (rs < inmediate)
 ----
-SLTIU (Set on Less Than Immediate Unsigned)
+===SLTIU (Set on Less Than Immediate Unsigned)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -249,13 +251,13 @@ SLTIU (Set on Less Than Immediate Unsigned)
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-Format: SLTIU rt, rs, immediate
+*Formato:* SLTIU rt, rs, inmediate
 
-Purpose: To record the result of an unsigned less-than comparison with a constant.
+*Propósito:* Guarda el resultado sin signo de la comparacion con la constante.
 
-Description: rt ← (rs < immediate)
+*Descripción:* rt ← (rs < immediate)
 ----
-BEQ(Branch on Equal)
+===BEQ(Branch on Equal)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -264,13 +266,13 @@ BEQ(Branch on Equal)
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-Format: BEQ rs, rt, offset
+*Formato:* BEQ rs, rt, offset
 
-Purpose: To compare GPRs then do a PC-relative conditional branch.
+*Propósito:* Compara si son iguales y salta.
 
-Description: if (rs = rt) then branch
+*Descripción:* if (rs = rt) luego salta.
 ----
-BNE(Branch on Not Equal)
+===BNE(Branch on Not Equal)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -278,32 +280,32 @@ BNE(Branch on Not Equal)
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-Format: BNE rs, rt, offset
+*Formato:* BNE rs, rt, offset
 
-Purpose: To compare GPRs then do a PC-relative conditional branch.
+*Propósito:* Compara si son distintos y salta.
 
-Description: if (rs ≠ rt) then branch
+Description: if (rs ≠ rt) luego salta.
 ----
-J(Jump)
+===J(Jump)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0 0 0 0 1 0|  rs     |  rt     |   offset                      |
+|0 0 0 0 1 0|            instr_index                            |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-+----6------+---5-----+---5-----+---------------16--------------+
++----6------+-----------------------26--------------------------+
 }}}
 
-Format: J target
+*Formato:* J target
 
-Purpose: To branch within the current 256 MB aligned region.
+*Propósito:* Salto dentro de los siguientes 256 MB.
 ----
-JAL(Jump And Link)
+===JAL(Jump And Link)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0 0 0 0 1 1|  rs     |  rt     |   offset                      |
+|0 0 0 0 1 1|            instr_index                            |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-+----6------+---5-----+---5-----+---------------16--------------+
++----6------+---------------------26----------------------------+
 }}}
 
 
