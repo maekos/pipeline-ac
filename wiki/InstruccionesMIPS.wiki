@@ -16,11 +16,11 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-*Formato* LB rt,offset(base)
+*Formato:*           LB rt,offset(base)
 
-*Propósito*: Guarda un byte desde memoria a registro.
+*Propósito*:         Guarda un byte desde memoria a registro.
 
-rt <- memory <base+offset>
+rt ← memory[base+offset]
 ----
 === LH (Load halfword) ===
 {{{ 
@@ -31,11 +31,11 @@ rt <- memory <base+offset>
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-*Formato* LH rt,offset(base)
+*Formato:* LH rt,offset(base)
 
-*Propósito*: Guarda una media palabra desde memoria a registro.
+*Propósito:*: Guarda una media palabra desde memoria a registro.
 
-rt <- memory <base+offset>
+rt ← memory[base+offset]
 ----
 === LW (Load word) === 
 {{{
@@ -50,7 +50,7 @@ rt <- memory <base+offset>
 
 * Propósito*: Guarda una palabra desde memoria a registro.
 
-rt <- memory <base+offset>
+rt ← memory[base+offset]
 ----
 === LWU (Load word unsigned) ===
 {{{
@@ -63,9 +63,9 @@ rt <- memory <base+offset>
 
 *Formato*  LWU rt,offset(base)
 
-* Propósito*: Guarda una palabra sin signo desde memoria a registro.
+*Propósito:* Guarda una palabra sin signo desde memoria a registro.
 
-rt <- memory <base+offset>
+rt ← memory[base+offset]
 ----
 === LBU (Load byte unsigned) ===
 {{{
@@ -76,11 +76,11 @@ rt <- memory <base+offset>
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-*Formato* LBU rt,offset(base)
+*Formato:* LBU rt,offset(base)
 
 *Propósito*: Guarda un byte sin signo desde memoria a registro.
 
-rt <- memory <base+offset>
+rt ← memory[base+offset]
 ----
 === LHU (Load halfword unsigned) ===
 {{{ 
@@ -95,7 +95,7 @@ rt <- memory <base+offset>
 
 *Propósito*: Guarda una media palabra sin signo desde memoria a registro.
 
-rt <- memory <base+offset>
+rt ← memory[base+offset]
 ----
 ===SB (store byte)===
 {{{ 
@@ -110,7 +110,7 @@ rt <- memory <base+offset>
 
 *Propósito* Guarda byte a memoria.
 
-memory<base+offset> <- rt
+memory[base+offset] ← rt
 ----
 === SH(store halfword) ===
 {{{ 
@@ -121,11 +121,11 @@ memory<base+offset> <- rt
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-*Formato* SH rt,offset(base)
+*Formato:* SH rt,offset(base)
 
-*Propósito* Guarda media palabra en memoria.
+*Propósito:* Guarda media palabra en memoria.
 
-memory<base+offset> <- rt
+memory[base+offset] ← rt
 ----
 ===SW(store word)===
 {{{ 
@@ -140,7 +140,7 @@ memory<base+offset> <- rt
 
 *Propósito* Guarda palabra en memoria.
 
-memory<base+offset> <- rt
+memory[base+offset] ← rt
 
 === ADDI (Add Inmediate Word)===
 {{{ 
@@ -152,7 +152,7 @@ memory<base+offset> <- rt
 }}}
 *Formato* ADDI rt, rs, immediate
 
-*Propósito* To add a constant to a 32-bit integer. If overflow occurs,then trap.
+*Propósito:* Suma una constante a un entero de 32 bits. Si ocurre un overflow, then trap.
 
 *Description* rt ← rs + immediate
 ----
@@ -164,9 +164,9 @@ memory<base+offset> <- rt
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-*Formato* ADDIU rt, rs, immediate
+*Formato:* ADDIU rt, rs, immediate
 
-*Propósito* To add a constant to a 32-bit integer. If overflow occurs,then trap.
+*Propósito:* Suma una constante a un entero de 32 bits. Si ocurre un overflow, then trap.
 
 *Description* rt ← rs + immediate
 ----
@@ -179,13 +179,13 @@ memory<base+offset> <- rt
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-*Format* ANDI rt, rs, immediate
+*Formato:* ANDI rt, rs, immediate
 
-*Purpose* To do a bitwise logical AND with a constant.
+*Propósito:* Hace bit a bit la operacion lógica and con una constante.
 
 *Description* rt ← rs AND immediate
 ----
-ORI (OR Inmediate)
+===ORI (OR Inmediate)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -194,13 +194,13 @@ ORI (OR Inmediate)
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-Format: ORI rt, rs, immediate
+*Formato:* ORI rt, rs, immediate
 
-Purpose To do a bitwise logical OR with a constant.
+*Propósito:* Hace una operación lógica OR bit a bit con una constante.
 
-Description: rd ← rs OR immediate
+*Description:* rd ← rs OR immediate
 ----
-XORI (Exclusive OR Immediate)
+===XORI (Exclusive OR Immediate)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -211,23 +211,23 @@ XORI (Exclusive OR Immediate)
 
 Format: XORI rt, rs, immediate
 
-Purpose: To do a bitwise logical EXCLUSIVE OR with a constant.
+Purpose: Hace una operación lógica OR bit a bit con una constante.
 
-Description: rt ← rs XOR immediate
+Description: rt ← rs XOR inmediate
 ----
-LUI(Load Upper Immediate)
+===LUI(Load Upper Inmediate)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0 0 1 1 1 1|  rs     |  rt     |   inmediate                   |
+|0 0 1 1 1 1|0 0 0 0 0|  rt     |   inmediate                   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-Format: LUI rt, immediate
+*Formato:* LUI rt, inmediate
 
-Purpose: To load a constant into the upper half of a word.
+*Propósito:* Carga una constante en la parte alta de una media palabra.
 
-Description: rt ← immediate || 016
+*Descrición: rt ← inmediate || ,,0,,16
 ----
 SLTI(Set on Less Than Immediate)
 {{{ 
