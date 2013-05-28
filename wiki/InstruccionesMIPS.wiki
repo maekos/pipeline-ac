@@ -1,0 +1,190 @@
+#Lista de instrucciones que contemplan este trabajo
+
+= Introduction =
+
+Para comenzar con el trabajo practico necesitamos saber cuales son las instrucciones que entran en juego en el pipeline. Una vez hecho esto podemos comenzar primero por un parser que verifique el estado de las instrucciones (si están correctamente escritas), para luego ejecutarlas con el pipeline.
+
+= Instrucciones =
+
+== Tipo I ==
+=== LB (Load byte) ===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 0 0 0 0|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato* LB rt,offset(base)
+
+*Propósito*: Guarda un byte desde memoria a registro.
+
+rt <- memory <base+offset>
+----
+=== LH (Load halfword) ===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 0 0 0 1|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato* LH rt,offset(base)
+
+*Propósito*: Guarda una media palabra desde memoria a registro.
+
+rt <- memory <base+offset>
+----
+=== LW (Load word) === 
+{{{
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 0 0 1 1|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato*  LW rt,offset(base)
+
+* Propósito*: Guarda una palabra desde memoria a registro.
+
+rt <- memory <base+offset>
+----
+=== LWU (Load word unsigned) ===
+{{{
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 0 1 1 1|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato*  LWU rt,offset(base)
+
+* Propósito*: Guarda una palabra sin signo desde memoria a registro.
+
+rt <- memory <base+offset>
+----
+=== LBU (Load byte unsigned) ===
+{{{
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 0 0 0 0|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato* LBU rt,offset(base)
+
+*Propósito*: Guarda un byte sin signo desde memoria a registro.
+
+rt <- memory <base+offset>
+----
+=== LHU (Load halfword unsigned) ===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 0 0 0 1|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato* LHU rt,offset(base)
+
+*Propósito*: Guarda una media palabra sin signo desde memoria a registro.
+
+rt <- memory <base+offset>
+----
+===SB (store byte)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 1 0 0 0|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato* SB rt,offset(base)
+
+*Propósito* Guarda byte a memoria.
+
+memory<base+offset> <- rt
+----
+=== SH(store halfword) ===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 1 0 0 1|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato* SH rt,offset(base)
+
+*Propósito* Guarda media palabra en memoria.
+
+memory<base+offset> <- rt
+----
+===SW(store word)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|1 0 1 0 0 1|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Formato* SW rt,offset(base)
+
+*Propósito* Guarda palabra en memoria.
+
+memory<base+offset> <- rt
+
+=== ADDI (Add Inmediate Word)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 0 0 0|base     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+Formato: ADDI rt, rs, immediate
+Propósito: To add a constant to a 32-bit integer. If overflow occurs, then trap.
+Description: rt ← rs + immediate
+----
+ADDIU:
+ANDI:
+ORI:
+XORI:
+LUI:
+SLTI:
+SLTIU:
+BEQ:
+BNE:
+J:
+JAL:
+
+*Tipo J*
+JR:
+JALR:
+
+*Tipo R*
+SLL:
+SRL:
+SRA:
+SLLV:
+SRLV:
+SRAV:
+ADD:
+ADDU:
+SUB:
+SUBU: 
+AND:
+OR:
+XOR:
+NOR:
+SLT:
+SLTU:
+JR:
