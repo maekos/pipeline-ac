@@ -309,10 +309,11 @@ memory[base+offset] ← rt
 +----6------+---------------------26----------------------------+
 }}}
 *Formato:* JAL target
-*Propósito:* Llama a procedimiento dentro de los siguientes 256 MB
 
+*Propósito:* Llama a procedimiento dentro de los siguientes 256 MB
+----
 ==Tipo J==
-JR
+JR (Jump Register)
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -322,10 +323,12 @@ JR
 }}}
 
 *Formato:* JR rs
-*Propósito:* Salta a una direccion de instruccion en un registro.
-*Descripción:* PC ← rs
 
-JALR
+*Propósito:* Salta a una dirección de instrucción en un registro.
+
+*Descripción:* PC ← rs
+----
+JALR (Jump And Link Register)
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -339,21 +342,144 @@ JALR
 *Propósito:* Procedimiento llama a una dirección de instrucción en un registro.
 *Descripción:* rd ← return_addr, PC ← rs
 
-*Tipo R*
-SLL:
-SRL:
-SRA:
-SLLV:
-SRLV:
-SRAV:
-ADD:
-ADDU:
-SUB:
-SUBU: 
+==Tipo R==
+===SLL (Shift Word Left Logical)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|0 0 0 0 0|  rt     |  rd     |  sa     |0 0 0 0 0 0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SLL rd, rt, sa
+
+*Propósito:* Corre a la izquierda un número de bits indicado.
+
+*Descripción:* rd ← rt << sa
+----
+===SRL (Shift Word Right Logical)===
+
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|0 0 0 0 0|  rt     |  rd     |  sa     |0 0 0 0 1 0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SRL rd, rt, sa
+
+*Propósito:*  Corre a la derecha un número de bits indicado.
+
+*Descripción:* rd ← rt >> sa (logical)
+----
+===SRA (Shift Word Right Arithmetic)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|0 0 0 0 0|  rt     |  rd     |  sa     |0 0 0 0 1 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SRA rd, rt, sa
+
+*Propósito:* To arithmetic right shift a word by a fixed number of bits.
+
+*Descripción:* rd ← rt >> sa (arithmetic)
+----
+===SLLV (Shift Word Left Logical Variable)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|0 0 0 0 0|  rt     |  rd     |  sa     |0 0 0 1 0 0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SLLV rd, rt, rs
+
+*Propósito:* To left shift a word by a variable number of bits.
+
+*Descripción:* rd ← rt << rs
+----
+===SRLV (Shift Word Right Logical Variable)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|0 0 0 0 0|  rt     |  rd     |  sa     |0 0 0 1 1 0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SRLV rd, rt, rs
+
+*Propósito:* To logical right shift a word by a variable number of bits.
+
+*Descripción:* rd ← rt >> rs (logical)
+----
+===SRAV(Shift Word Right Arithmetic Variable)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|0 0 0 0 0|  rt     |  rd     |  sa     |0 0 0 1 1 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SRAV rd, rt, rs
+
+*Propósito:* To arithmetic right shift a word by a variable number of bits.
+
+*Descripción: rd ← rt >> rs (arithmetic)
+----
+===ADD(Add Word)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 0 0 0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* ADD rd, rs, rt
+
+*Propósito:*  To add 32-bit integers. If overflow occurs, then trap.
+
+*Descripción:* rd ← rs + rt
+----
+===ADDU(Add Unsigned Word)===
+
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 0 0 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* ADDU rd, rs, rt
+
+*Propósito:* To add 32-bit integers.
+
+*Descripción:* rd ← rs + rt
+----
+SUB()
+----
+SUBU:
+---- 
 AND:
+----
 OR:
+----
 XOR:
+----
 NOR:
+----
 SLT:
+----
 SLTU:
+----
 JR:
+----
