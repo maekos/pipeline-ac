@@ -313,7 +313,31 @@ memory[base+offset] ← rt
 
 ==Tipo J==
 JR
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |0 0 0 0 0 0 0 0 0 0 0 0 0 0 0|0 0 1 0 0 0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+---------------15------------+-----6-----+
+}}}
+
+*Formato:* JR rs
+*Propósito:* Salta a una direccion de instruccion en un registro.
+*Descripción:* PC ← rs
+
 JALR
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |0 0 0 0 0|  rd     |0 0 0 0 0|0 0 1 0 0 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* JALR rs (rd=31 implícito)
+*Formato:* JALR rd, rs
+*Propósito:* Procedimiento llama a una dirección de instrucción en un registro.
+*Descripción:* rd ← return_addr, PC ← rs
 
 *Tipo R*
 SLL:
