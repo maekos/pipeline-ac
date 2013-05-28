@@ -185,15 +185,127 @@ memory<base+offset> <- rt
 
 *Description* rt ← rs AND immediate
 ----
-ORI:
-XORI:
-LUI:
-SLTI:
-SLTIU:
-BEQ:
-BNE:
-J:
-JAL:
+ORI (OR Inmediate)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 1 0 1|  rs     |  rt     |   inmediate                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+Format: ORI rt, rs, immediate
+
+Purpose To do a bitwise logical OR with a constant.
+
+Description: rd ← rs OR immediate
+----
+XORI (Exclusive OR Immediate)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 1 1 0|  rs     |  rt     |   inmediate                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+Format: XORI rt, rs, immediate
+
+Purpose: To do a bitwise logical EXCLUSIVE OR with a constant.
+
+Description: rt ← rs XOR immediate
+----
+LUI(Load Upper Immediate)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 1 1 1|  rs     |  rt     |   inmediate                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+Format: LUI rt, immediate
+
+Purpose: To load a constant into the upper half of a word.
+
+Description: rt ← immediate || 016
+----
+SLTI(Set on Less Than Immediate)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 0 1 0|  rs     |  rt     |   inmediate                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+Format: SLTI rt, rs, immediate
+Purpose: To record the result of a less-than comparison with a constant.
+Description: rt ← (rs < immediate)
+----
+SLTIU (Set on Less Than Immediate Unsigned)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 0 1 1|  rs     |  rt     |   inmediate                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+Format: SLTIU rt, rs, immediate
+
+Purpose: To record the result of an unsigned less-than comparison with a constant.
+
+Description: rt ← (rs < immediate)
+----
+BEQ(Branch on Equal)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 1 0 0|  rs     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+Format: BEQ rs, rt, offset
+
+Purpose: To compare GPRs then do a PC-relative conditional branch.
+
+Description: if (rs = rt) then branch
+----
+BNE(Branch on Not Equal)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 1 0 1|  rs     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+Format: BNE rs, rt, offset
+
+Purpose: To compare GPRs then do a PC-relative conditional branch.
+
+Description: if (rs ≠ rt) then branch
+----
+J(Jump)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 1 0|  rs     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+Format: J target
+
+Purpose: To branch within the current 256 MB aligned region.
+----
+JAL(Jump And Link)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 1 1|  rs     |  rt     |   offset                      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
 
 *Tipo J*
 JR:
