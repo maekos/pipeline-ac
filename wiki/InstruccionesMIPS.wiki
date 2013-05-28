@@ -146,16 +146,45 @@ memory<base+offset> <- rt
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0 0 1 0 0 0|base     |  rt     |   offset                      |
+|0 0 1 0 0 0|  rs     |  rt     |   inmediate                   |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-Formato: ADDI rt, rs, immediate
-Propósito: To add a constant to a 32-bit integer. If overflow occurs, then trap.
-Description: rt ← rs + immediate
+*Formato* ADDI rt, rs, immediate
+
+*Propósito* To add a constant to a 32-bit integer. If overflow occurs,then trap.
+
+*Description* rt ← rs + immediate
 ----
-ADDIU:
-ANDI:
+=== ADDIU (Add Inmediate Word unsigned)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 0 0 1|  rs     |  rt     |   inmediate                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+*Formato* ADDIU rt, rs, immediate
+
+*Propósito* To add a constant to a 32-bit integer. If overflow occurs,then trap.
+
+*Description* rt ← rs + immediate
+----
+=== ANDI (And Inmediate)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 1 1 0 0|  rs     |  rt     |   inmediate                   |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+---5-----+---5-----+---------------16--------------+
+}}}
+
+*Format* ANDI rt, rs, immediate
+
+*Purpose* To do a bitwise logical AND with a constant.
+
+*Description* rt ← rs AND immediate
+----
 ORI:
 XORI:
 LUI:
