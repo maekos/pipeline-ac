@@ -1,17 +1,19 @@
-#Formato de commits
-
 = Formato de los commits =
 
-Entre corchetes, no se como se ponen aca, disculpas.
 
-*<Codigo>* Para subir código fuente.
+*[Código]* Para subir código fuente.
+
  
-*<Doc>* Para la documentación.
+*[Doc']* Para la documentación.
 
-*<Bug>*+#Ref Referencia del ticket que describe el Bug.
+*[Wiki']* Para cuando se edita la WiKi
 
-*<BugFix>*+ Ref # + Referencia del ticket que describe el Bug que se arregló.
+*[Bug']* + Ref # Referencia del ticket que describe el Bug.
 
+*[BugFix']* + Ref # + Referencia del ticket que describe el Bug que se arregló.
+
+
+_NOTA: los tildes que están entre los corchetes no se colocan, pero en esta wiki todavía no se como hacer para que me muestre los corchete sin hacer ese artilugio porque sino lo toma como links_
 = Uso de SVN =
 
 *svn help* Siempre es buena la ayuda.
@@ -32,4 +34,4 @@ Entre corchetes, no se como se ponen aca, disculpas.
 
     * Ser bastante detallista en cuanto a la descripción del commit. 
 
-    * No cobran por commit asi que cada cambio que se haga, hacer el commit y detallarlo, total se puede volver a la revisión anterior.
+    * No cobran por commit así que cada cambio que se haga, hacer el commit y detallarlo, total se puede volver a la revisión anterior.
