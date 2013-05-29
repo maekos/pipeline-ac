@@ -4,16 +4,14 @@
 *[Código]* Para subir código fuente.
 
  
-*[Doc']* Para la documentación.
+*`[Doc`]* Para la documentación.
 
-*[Wiki']* Para cuando se edita la WiKi
+*`[Wiki`]* Para cuando se edita la WiKi
 
-*[Bug']* + Ref # Referencia del ticket que describe el Bug.
+*`[Bug`]* + Ref # Referencia del ticket que describe el Bug.
 
-*[BugFix']* + Ref # + Referencia del ticket que describe el Bug que se arregló.
+*`[BugFix`]* + Ref # + Referencia del ticket que describe el Bug que se arregló.
 
-
-_NOTA: los tildes que están entre los corchetes no se colocan, pero en esta wiki todavía no se como hacer para que me muestre los corchete sin hacer ese artilugio porque sino lo toma como links_
 = Uso de SVN =
 
 *svn help* Siempre es buena la ayuda.
