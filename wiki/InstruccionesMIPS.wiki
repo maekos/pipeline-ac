@@ -48,7 +48,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 +----6------+----5----+---5-----+---------------16--------------+
 }}}
 
-*Formato*  LW rt,offset(base)
+*Formato:*  LW rt,offset(base)
 
 * Propósito*: Guarda una palabra desde memoria a registro.
 
@@ -64,7 +64,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 +----6------+----5----+----5----+---------------16--------------+
 }}}
 
-*Formato*  LWU rt,offset(base)
+*Formato:*  LWU rt,offset(base)
 
 *Propósito:* Guarda una palabra sin signo desde memoria a registro.
 
@@ -96,9 +96,9 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 +----6------+----5----+----5----+---------------16--------------+
 }}}
 
-*Formato* LHU rt,offset(base)
+*Formato:* LHU rt,offset(base)
 
-*Propósito*: Guarda una media palabra sin signo desde memoria a registro.
+*Propósito:* Guarda una media palabra sin signo desde memoria a registro.
 
 *Descripción:* rt ← memory[base+offset]
 ----
@@ -112,9 +112,9 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 +----6------+-----5-----+---5-----+---------------16--------------+
 }}}
 
-*Formato* SB rt,offset(base)
+*Formato:* SB rt,offset(base)
 
-*Propósito* Guarda byte a memoria.
+*Propósito:* Guarda byte a memoria.
 
 *Descripción:* memory[base+offset] ← rt
 ----
@@ -143,9 +143,9 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
 
-*Formato* SW rt,offset(base)
+*Formato:* SW rt,offset(base)
 
-*Propósito* Guarda palabra en memoria.
+*Propósito:* Guarda palabra en memoria.
 
 *Descripción:* memory[base+offset] ← rt
 ----
@@ -158,7 +158,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 +----6------+---5-----+---5-----+---------------16--------------+
 }}}
-*Formato* ADDI rt, rs, inmediate
+*Formato:* ADDI rt, rs, inmediate
 
 *Propósito:* Suma una constante a un entero de 32 bits. Si ocurre un overflow, then trap.
 
@@ -177,7 +177,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 
 *Propósito:* Suma una constante a un entero de 32 bits. Si ocurre un overflow, then trap.
 
-*Descripción* rt ← rs + inmediate
+*Descripción:* rt ← rs + inmediate
 ----
 ----
 === ANDI (And Inmediate)===
@@ -193,7 +193,8 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 
 *Propósito:* Hace bit a bit la operación lógica AND con una constante.
 
-*Description* rt ← rs AND immediate
+*Description:* rt ← rs AND immediate
+----
 ----
 ===ORI (OR Inmediate)===
 {{{ 
@@ -317,6 +318,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 *Propósito:* Salto dentro de los siguientes 256 MB.
 
 ----
+----
 ===JAL(Jump And Link)===
 {{{ 
 32                             16                               0
@@ -397,6 +399,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 *Propósito:*  Corre a la derecha un número de bits indicado.
 
 *Descripción:* rd ← rt >> sa (logical)
+----
 ----
 ===SRA (Shift Word Right Arithmetic)===
 {{{ 
@@ -528,6 +531,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 *Descripción:* rd ← rs - rt
 ----
 ---- 
+
 ===AND (And)===
 {{{ 
 32                             16                               0
@@ -543,6 +547,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 *Descripción:* rd ← rs AND rt
 ----
 ----
+
 ===OR(or)===
 {{{ 
 32                             16                               0
