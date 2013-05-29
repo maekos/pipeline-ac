@@ -331,7 +331,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 ----
 ----
 ==Tipo J==
-JR (Jump Register)
+===JR (Jump Register)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -347,7 +347,7 @@ JR (Jump Register)
 *Descripción:* PC ← rs
 ----
 ----
-JALR (Jump And Link Register)
+===JALR (Jump And Link Register)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -357,6 +357,7 @@ JALR (Jump And Link Register)
 }}}
 
 *Formato:* JALR rs (rd=31 implícito)
+
 *Formato:* JALR rd, rs
 
 *Propósito:* Procedimiento llama a una dirección de instrucción en un registro.
@@ -494,7 +495,7 @@ JALR (Jump And Link Register)
 *Descripción:* rd ← rs + rt
 ----
 ----
-SUB(Subtract Word)
+===SUB(Subtract Word)===
 {{{ 
 32                             16                               0
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
