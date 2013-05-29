@@ -20,7 +20,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 
 *Propósito*:         Guarda un byte desde memoria a registro.
 
-rt ← memory[base+offset]
+*Descripción:* rt ← memory[base+offset]
 ----
 === LH (Load halfword) ===
 {{{ 
@@ -35,7 +35,7 @@ rt ← memory[base+offset]
 
 *Propósito:*: Guarda una media palabra desde memoria a registro.
 
-rt ← memory[base+offset]
+*Descripción:* rt ← memory[base+offset]
 ----
 === LW (Load word) === 
 {{{
@@ -50,7 +50,7 @@ rt ← memory[base+offset]
 
 * Propósito*: Guarda una palabra desde memoria a registro.
 
-rt ← memory[base+offset]
+*Descripción:* rt ← memory[base+offset]
 ----
 === LWU (Load word unsigned) ===
 {{{
@@ -65,7 +65,7 @@ rt ← memory[base+offset]
 
 *Propósito:* Guarda una palabra sin signo desde memoria a registro.
 
-rt ← memory[base+offset]
+*Descripción:* rt ← memory[base+offset]
 ----
 === LBU (Load byte unsigned) ===
 {{{
@@ -80,7 +80,7 @@ rt ← memory[base+offset]
 
 *Propósito*: Guarda un byte sin signo desde memoria a registro.
 
-rt ← memory[base+offset]
+*Descripción:* rt ← memory[base+offset]
 ----
 === LHU (Load halfword unsigned) ===
 {{{ 
@@ -95,7 +95,7 @@ rt ← memory[base+offset]
 
 *Propósito*: Guarda una media palabra sin signo desde memoria a registro.
 
-rt ← memory[base+offset]
+*Descripción:* rt ← memory[base+offset]
 ----
 ===SB (store byte)===
 {{{ 
@@ -110,7 +110,7 @@ rt ← memory[base+offset]
 
 *Propósito* Guarda byte a memoria.
 
-memory[base+offset] ← rt
+*Descripción:* memory[base+offset] ← rt
 ----
 === SH(store halfword) ===
 {{{ 
@@ -125,7 +125,7 @@ memory[base+offset] ← rt
 
 *Propósito:* Guarda media palabra en memoria.
 
-memory[base+offset] ← rt
+*Descripción:* memory[base+offset] ← rt
 ----
 ===SW(store word)===
 {{{ 
