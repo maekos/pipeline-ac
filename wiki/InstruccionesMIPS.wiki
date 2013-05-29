@@ -1,6 +1,6 @@
 #Lista de instrucciones que contemplan este trabajo
 
-= Introduction =
+= Introduccion =
 
 Para comenzar con el trabajo practico necesitamos saber cuales son las instrucciones que entran en juego en el pipeline. Una vez hecho esto podemos comenzar primero por un parser que verifique el estado de las instrucciones (si están correctamente escritas), para luego ejecutarlas con el pipeline.
 
@@ -465,21 +465,122 @@ JALR (Jump And Link Register)
 
 *Descripción:* rd ← rs + rt
 ----
-SUB()
+SUB(Subtract Word)
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 0 1 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SUB rd, rs, rt
+
+*Propósito:* Para restar enteros de 32 bits.
+
+*Descripción:* rd ← rs - rt
+
 ----
-SUBU:
+===SUB(Subtract Unsigned Word)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 0 1 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SUBU rd, rs, rt
+
+*Propósito:* Para restar enteros de 32 bits.
+
+*Descripción:* rd ← rs - rt
 ---- 
-AND:
+===AND (And)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 0 1 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+*Formato:* AND rd, rs, rt
+
+*Propósito:* Operación lógica AND bit a bit.
+
+*Descripción:* rd ← rs AND rt
 ----
-OR:
+===OR(or)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 1 0 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* OR rd, rs, rt
+
+*Proposito:* Operacion logica OR bit a bit.
+
+*Descripcion:* rd ← rs OR rt
 ----
-XOR:
+===XOR(Exclusive OR)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 1 0 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+*Formato:* XOR rd, rs, rt
+
+*Propósito:* Operación lógica OR EXCLUSIVA bit a bit.
+
+*Descripción:* rd ← rs XOR rt
 ----
-NOR:
+===NOR(Not OR)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 0 1 1 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+*Formato:* NOR rd, rs, rt
+
+*Propósito:* Operación lógica bit a bit NOT OR
+
+*Descripción:* rd ← rs NOR rt
 ----
-SLT:
+===SLT(Set On Less Than)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 1 0 1 0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SLT rd, rs, rt
+
+*Propósito:* Guarda el resultado de la comparación.
+
+*Descripción:* rd ← (rs < rt)
 ----
-SLTU:
-----
-JR:
+===SLTU(Set On Less Than Unsigned)===
+{{{ 
+32                             16                               0
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 0 0 0 0 0|  rs     |  rt     |  rd     |0 0 0 0 0|1 0 1 0 1 1|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
++----6------+----5----+----5----+---5-----+----5----+-----6-----+
+}}}
+
+*Formato:* SLTU rd, rs, rt
+
+*Propósito:* guarda el resultado de la comparación sin signo.
+
+*Descripción:* rd ← (rs < rt)
+
 ----
