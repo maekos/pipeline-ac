@@ -253,7 +253,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 }}}
 *Formato:* SLTI rt, rs, inmediate
 
-*Propósito:* Guarda el resultado de la comparación con la constante
+*Propósito:* Guarda el resultado de la comparación con la constante. Coloca 1 en rt si rs es menor que el inmediato.
 
 *Descripción:* rt ← (rs < inmediate)
 ----
@@ -268,7 +268,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 }}}
 *Formato:* SLTIU rt, rs, inmediate
 
-*Propósito:* Guarda el resultado sin signo de la comparacion con la constante.
+*Propósito:* Guarda el resultado sin signo de la comparacion con la constante. Coloca 1 en rt si rs es menor que el inmediato.
 
 *Descripción:* rt ← (rs < immediate)
 ----
@@ -604,7 +604,7 @@ Para comenzar con el trabajo practico necesitamos saber cuales son las instrucci
 
 *Formato:* SLT rd, rs, rt
 
-*Propósito:* Guarda el resultado de la comparación.
+*Propósito:* Guarda el resultado de la comparación. Coloca 1 en rt si rs es menor que el inmediato.
 
 *Descripción:* rd ← (rs < rt)
 ----
